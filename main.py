@@ -10,8 +10,6 @@ def main():
 
     # On initialise l'objet url, qui va nous permettre de faire la recherche
     url = "https://ensai.fr/"
-    with open('crawled_webpages.txt', 'w') as f:
-        f.write(url)
 
     while len(liste_urls) < 50:
 
@@ -22,11 +20,13 @@ def main():
             urls_found.append(link.get('href'))
 
         for link in urls_found:
-            if link not in liste_urls:
+            if link not in liste_urls and link != '#header':
                 liste_urls.append(link)
     
+    f = open("crawled_webpages.txt", "w")
     for link in liste_urls:
-        with open('crawled_webpages.txt', 'w') as f:
-            f.write(link)
+        f.write(link)
+        f.write("\n")
+    f.close()
 
 main()
