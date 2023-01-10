@@ -35,7 +35,7 @@ def requeter(liste_urls, index):
     
     # On crée un try/except afin de ne pas crawler un site web qui l’interdit.
     try:
-        url_request = urllib.request.urlopen(liste_urls[index])
+        url_request = request.urlopen(liste_urls[index])
         soup = BS(url_request, 'html.parser')
     
         # Pour chaque lien de page trouvé, on vérifie que le lien est un URL valide.
