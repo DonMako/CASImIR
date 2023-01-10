@@ -1,3 +1,4 @@
+from urllib import parse
 from urllib import request
 from urllib import robotparser
 from bs4 import BeautifulSoup as BS
@@ -58,11 +59,15 @@ def requeter(liste_urls, index):
 # La fonction permettant d'analyser le fichier robot.txt d'une page, afin de déterminer si les liens qu'elle contient sont autorisés à crawler.
 def analyse_robot(url):
 
-    parser = robotparser.RobotFileParser(url)
-    parser.read()
+    parser = robotparser.RobotFileParser()
+    parser.set_url(parse.urljoin(url, 'robots.txt'))
+    try:
+        parser.read()
+    except:
+        pass
 
 
-
-url_user = input("Enter the starting url : ")
-threshold_user = input("Enter the threshold desired : ")
-main(url_user, threshold_user)
+analyse_robot("https://ensai.fr/")
+#url_user = input("Enter the starting url : ")
+#threshold_user = input("Enter the threshold desired : ")
+#main(url_user, threshold_user)
