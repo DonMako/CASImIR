@@ -5,7 +5,7 @@
 
 Le programme se termine lorsque le crawler arrive à la limite d'urls à trouver (limite indiquée par l'utilisateur), ou s'il ne trouve plus de liens à explorer.
 
-Une fois terminé, le programme écrit dans le fichier "crawled_webpages.txt" toutes les urls trouvées.
+Une fois terminé, le programme écrit dans un fichier *crawled_webpages.txt* toutes les urls trouvées.
 
 ## Lancer le programme
 
