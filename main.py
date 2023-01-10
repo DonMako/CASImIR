@@ -11,7 +11,7 @@ def main(url, threshold):
     # L'indice de départ, afin de ne prendre en url d'exploration que des url pas encore testés.
     starting_index = 0
 
-    while len(liste_urls) < threshold or starting_index > len(liste_urls):
+    while len(liste_urls) < int(threshold) or starting_index > len(liste_urls):
 
         result = requeter(liste_urls, starting_index)
         for link in result:
@@ -51,6 +51,6 @@ def requeter(liste_urls, index):
     return urls_found
 
 
-url_user = input("Enter the starting url")
-threshold_user = input("Enter the threshold desired")
+url_user = input("Enter the starting url : ")
+threshold_user = input("Enter the threshold desired : ")
 main(url_user, threshold_user)
