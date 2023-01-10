@@ -15,3 +15,6 @@ cd crawler
 pip install -r requirements.txt
 python3 main.py
 ```
+
+## Auteur
+Lucas MACAUX
