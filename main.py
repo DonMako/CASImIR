@@ -6,18 +6,18 @@ def main(url, threshold):
 
     # On stocke les urls des pages déjà croisées, pour ne pas stocker 
     liste_urls = []
+    liste_urls.append(url)
 
-    while len(liste_urls) < threshold:
+    # L'indice de départ, afin de ne prendre en url d'exploration que des url pas encore testés.
+    starting_index = 0
 
-        url_request = urllib.request.urlopen(url)
-        soup = BS(url_request, 'html.parser')
-        urls_found = []
-        for link in soup.find_all('a'):
-            urls_found.append(link.get('href'))
+    while len(liste_urls) < threshold or starting_index > len(liste_urls):
 
-        for link in urls_found:
-            if link not in liste_urls and link != '#header':
+        result = requeter(liste_urls, starting_index)
+        for link in result:
+            if link not in liste_urls:
                 liste_urls.append(link)
+        starting_index += 1
         
     f = open("crawled_webpages.txt", "w")
     for link in liste_urls[:threshold]:
@@ -26,4 +26,25 @@ def main(url, threshold):
     f.close()
 
 
-main("https://ensai.fr/", 15)
+
+
+def requeter(liste_urls, index):
+
+    urls_found = []
+    try:
+        url_request = urllib.request.urlopen(liste_urls[index])
+        soup = BS(url_request, 'html.parser')
+    
+        for link in soup.find_all('a'):
+            if link != "#header":
+                urls_found.append(link.get('href'))
+
+    except:
+        pass
+
+    return urls_found
+
+
+
+
+main("https://ensai.fr/", 200)
