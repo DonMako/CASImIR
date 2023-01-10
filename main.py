@@ -41,10 +41,10 @@ def requeter(liste_urls, index):
         # Pour chaque lien de page trouvé, on vérifie que le lien est un URL valide.
         # Si le lien est valide, on l'ajoute dans les liens trouvés.
         for link in soup.find_all('a'):
-            #parsed_url = urllib.parse.urlparse.urlparse(link.get('href'))
-            #if bool(parsed_url.scheme):
-            #    urls_found.append(link.get('href'))
-            urls_found.append(link.get('href'))
+            parsed_url = parse.urlparse.urlparse(link.get('href'))
+            if bool(parsed_url.scheme):
+                urls_found.append(link.get('href'))
+            #urls_found.append(link.get('href'))
 
     except:
         pass
