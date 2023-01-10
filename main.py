@@ -21,7 +21,7 @@ def main(url, threshold):
         starting_index += 1
         
     f = open("crawled_webpages.txt", "w")
-    for link in liste_urls[:threshold]:
+    for link in liste_urls[:int(threshold)]:
         f.write(link)
         f.write("\n")
     f.close()
