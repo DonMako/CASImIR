@@ -52,5 +52,4 @@ def requeter(liste_urls, index):
 
 
 
-
 main("https://ensai.fr/", 15)
