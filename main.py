@@ -1,15 +1,19 @@
 from urllib import request
+from urllib import robotparser
 from bs4 import BeautifulSoup as BS
 
+
+# La fonction principale, permettant de boucler les recherches sur les URL, afin d'atteindre le seuil d'URL demandé par l'utilisateur.
 def main(url, threshold):
 
     # On stocke les urls des pages déjà croisées, pour ne pas stocker 
     liste_urls = []
     liste_urls.append(url)
 
-    # L'indice de départ, afin de ne prendre en url d'exploration que des url pas encore testés.
+    # L'indice de départ, afin de ne prendre en URL d'exploration que des URL pas encore testés.
     starting_index = 0
 
+    # Les conditions d'arrêt du programme : avoir atteint le seuil d'URL demandé par l'utilisateur, ou ne plus trouver de liens à requêter.
     while len(liste_urls) < int(threshold) or starting_index < len(liste_urls):
 
         result = requeter(liste_urls, starting_index)
@@ -26,7 +30,7 @@ def main(url, threshold):
 
 
 
-# La fonction permettant de trouver d'autres pages à explorer en analysant les balises de liens trouvées 
+# La fonction permettant de trouver d'autres pages à explorer à partir d'un URL, en analysant les balises dudit URL.
 def requeter(liste_urls, index):
 
     urls_found = []
@@ -48,6 +52,14 @@ def requeter(liste_urls, index):
         pass
 
     return urls_found
+
+
+
+# La fonction permettant d'analyser le fichier robot.txt d'une page, afin de déterminer si les liens qu'elle contient sont autorisés à crawler.
+def analyse_robot(url):
+
+    parser = robotparser.RobotFileParser(url)
+    parser.read()
 
 
 
