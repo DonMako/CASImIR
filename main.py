@@ -47,7 +47,7 @@ def requeter(liste_urls, index):
         for link in soup.find_all('a'):
             ref = link.get('href')
             if ref in analyse_robot(url_crawled):
-                urls_found.append()
+                urls_found.append(ref)
 
     except:
         pass
@@ -61,16 +61,18 @@ def analyse_robot(url):
 
     parser = robotparser.RobotFileParser()
     parser.set_url(parse.urljoin(url, 'robots.txt'))
+
+    f = open(url + 'robots.txt', "r")
     
     # On initialise la liste des url qui peuvent être crawlés
     url_allowed = []
 
     # On fait un try/except au cas où la page web n'a pas de robots.txt
     try:
-        parser.read()
-        for line in parser:
+        for line in f:
             if line.startswith('Allow'):
-                url_allowed.append(line.split(': ')[1].split(' ')[0]) 
+                url_allowed.append(line.split(': ')[1].split(' ')[0])
+
     except:
         pass
     
