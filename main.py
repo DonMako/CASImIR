@@ -15,10 +15,11 @@ def main(url, threshold):
     # L'indice de départ, afin de ne prendre en URL d'exploration que des URL pas encore testés.
     starting_index = 0
 
-    # Les conditions d'arrêt du programme : avoir atteint le seuil d'URL demandé par l'utilisateur, ou ne plus trouver de liens à requêter.
-    while len(liste_urls) < int(threshold) or starting_index < len(liste_urls):
+    # Les conditions d'arrêt du programme : avoir atteint le seuil d'URL demandé par l'utilisateur,
+    # ou ne plus trouver de liens à requêter (donc avoir vidé la liste de liens d'exploration).
+    while len(liste_urls) < int(threshold) and starting_index < len(liste_urls):
 
-        result = requeter(liste_urls, starting_index)
+        result = requeter(liste_urls[starting_index])
         for link in result:
             if link not in liste_urls:
                 liste_urls.append(link)
@@ -33,20 +34,20 @@ def main(url, threshold):
 
 
 # La fonction permettant de trouver d'autres pages à explorer à partir d'un URL, en analysant les balises dudit URL.
-def requeter(liste_urls, index):
+def requeter(url):
 
     urls_found = []
     
     try:
-        url_crawled = liste_urls[index]
-        url_request = request.urlopen(url_crawled)
+        url_request = request.urlopen(url)
+        urls_allowed = analyse_robot(url)
         soup = BS(url_request, 'html.parser')
     
         # Pour chaque lien de page trouvé, on vérifie que le lien est un URL autorisé à être crawlé.
         # Si le lien est valide, on l'ajoute dans les liens trouvés.
         for link in soup.find_all('a'):
             ref = link.get('href')
-            if ref in analyse_robot(url_crawled):
+            if ref in urls_allowed:
                 urls_found.append(ref)
 
     except:
@@ -74,7 +75,7 @@ def analyse_robot(url):
                 url_allowed.append(line.split(': ')[1].split(' ')[0])
 
     except:
-        pass
+        pass 
     
     return(url_allowed)
 
