@@ -17,7 +17,7 @@ def main(url, threshold):
 
     # Les conditions d'arrêt du programme : avoir atteint le seuil d'URL demandé par l'utilisateur,
     # ou ne plus trouver de liens à requêter (donc avoir vidé la liste de liens d'exploration).
-    while len(liste_urls) < int(threshold) and starting_index < len(liste_urls):
+    while starting_index < int(threshold) and starting_index < len(liste_urls):
 
         result = requeter(liste_urls[starting_index])
         for link in result:
@@ -60,24 +60,21 @@ def requeter(url):
 # La fonction permettant d'analyser le fichier robot.txt d'une page, afin de récupérer les liens qu'elle contient qui peuvent être crawlés.
 def analyse_robot(url):
 
-    parser = robotparser.RobotFileParser()
-    parser.set_url(parse.urljoin(url, 'robots.txt'))
-
     f = open(url + 'robots.txt', "r")
     
     # On initialise la liste des url qui peuvent être crawlés
-    url_allowed = []
+    urls_allowed = []
 
     # On fait un try/except au cas où la page web n'a pas de robots.txt
     try:
         for line in f:
             if line.startswith('Allow'):
-                url_allowed.append(line.split(': ')[1].split(' ')[0])
+                urls_allowed.append(line.split(': ')[1].split(' ')[0])
 
     except:
         pass 
     
-    return(url_allowed)
+    return(urls_allowed)
 
 
 
