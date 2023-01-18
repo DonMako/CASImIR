@@ -17,7 +17,7 @@ def main(url, threshold):
 
     # Les conditions d'arrêt du programme : avoir atteint le seuil d'URL demandé par l'utilisateur,
     # ou ne plus trouver de liens à requêter (donc avoir vidé la liste de liens d'exploration).
-    while starting_index < int(threshold) and starting_index < len(liste_urls):
+    while len(liste_urls) < int(threshold) and starting_index < len(liste_urls):
 
         result = requeter(liste_urls[starting_index])
         for link in result:
