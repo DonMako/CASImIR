@@ -1,5 +1,6 @@
 from urllib import request
 from bs4 import BeautifulSoup as BS
+import validators
 
 
 
@@ -19,7 +20,8 @@ def main(url, threshold):
 
         result = requeter(liste_urls[starting_index])
         for link in result:
-            if link not in liste_urls:
+            # On vérifie si on a pas déjà récupéré cet URL, et si cet URL est valide.
+            if link not in liste_urls and validators.url(str(link)):
                 liste_urls.append(link)
         starting_index += 1
         
