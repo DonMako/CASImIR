@@ -1,3 +1,5 @@
+from urllib import parse
+from urllib import robotparser
 from urllib import request
 from bs4 import BeautifulSoup as BS
 import validators
@@ -55,6 +57,40 @@ def requeter(url):
 
 
 
-url_user = input("Enter the starting url : ")
-threshold_user = input("Enter the threshold desired : ")
-main(url_user, threshold_user)
+# La fonction pour récupérer le robots.txt d'un URL, après avoir vérifié que le robots.txt n'avait pas déjà été récupéré.
+def requeter_robot(liste_urls, url):
+    
+    o = parse.urlparse(url)
+    base_url = "https://" + o.hostname
+
+    # On vérifié que l'URL n'a pas déjà été rencontré (donc qu'on a pas encore récupéré)
+    if base_url not in liste_urls:
+    
+        urls_allowed =[]
+
+        try:
+            parser = robotparser.RobotFileParser()
+            parser.set_url(base_url)
+            parser.read()
+            sitemaps = parser.site_maps()
+            if sitemaps != None:
+                urls_allowed = sitemaps
+
+        except:
+            pass
+
+    return urls_allowed
+    
+
+
+#lang = request.urlopen("https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry")
+#soup2 = BS(lang, 'html.parser')
+#print(soup2.find_all('Tag'))
+
+
+
+#url_user = input("Enter the starting url : ")
+#threshold_user = input("Enter the threshold desired : ")
+#main(url_user, threshold_user)
+
+
