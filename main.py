@@ -23,7 +23,7 @@ def main(url, threshold):
         result = requeter(liste_urls[starting_index])
         for link in result:
             # On vérifie si on a pas déjà récupéré cet URL, et si cet URL est valide.
-            if link not in liste_urls and validators.url(str(link)):
+            if link not in liste_urls and validators.url(str(link)) and lang_url(liste_urls, link):
                 liste_urls.append(link)
         starting_index += 1
         
@@ -83,14 +83,28 @@ def requeter_robot(liste_urls, url):
     
 
 
-#lang = request.urlopen("https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry")
-#soup2 = BS(lang, 'html.parser')
-#print(soup2.find_all('Tag'))
+# La fonction permettant de détecter si une page n'est pas la version dans une autre langue d'une page déjà indexée.
+def lang_url(liste_urls, url):
+
+    # On initalise le booléen permettant de savoir si l'URL est bien celui d'une page inconnue.
+    bool = True
+
+    try:
+        url_request = request.urlopen(url)
+        soup = BS(url_request, 'html.parser')
+
+        for link in soup.find_all('a'):
+            # On regarde si la page html de l'URL ne contient pas des pages alternative déjà indexées.
+            if link.get('rel') == "alternate" and link.get('href') in liste_urls:
+                bool = False    
+
+    except:
+        pass
+
+    return bool
 
 
 
-#url_user = input("Enter the starting url : ")
-#threshold_user = input("Enter the threshold desired : ")
-#main(url_user, threshold_user)
-
-
+url_user = input("Enter the starting url : ")
+threshold_user = input("Enter the threshold desired : ")
+main(url_user, threshold_user)
