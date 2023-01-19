@@ -1,6 +1,4 @@
-from urllib import parse
 from urllib import request
-from urllib import robotparser
 from bs4 import BeautifulSoup as BS
 
 
@@ -8,7 +6,7 @@ from bs4 import BeautifulSoup as BS
 # La fonction principale, permettant de boucler les recherches sur les URL, afin d'atteindre le seuil d'URL demandé par l'utilisateur.
 def main(url, threshold):
 
-    # On stocke les urls des pages déjà croisées, pour ne pas stocker 
+    # On stocke les urls des pages déjà croisées, pour ne pas avoir de doublon.
     liste_urls = []
     liste_urls.append(url)
 
@@ -40,41 +38,18 @@ def requeter(url):
     
     try:
         url_request = request.urlopen(url)
-        urls_allowed = analyse_robot(url)
         soup = BS(url_request, 'html.parser')
     
         # Pour chaque lien de page trouvé, on vérifie que le lien est un URL autorisé à être crawlé.
         # Si le lien est valide, on l'ajoute dans les liens trouvés.
         for link in soup.find_all('a'):
             ref = link.get('href')
-            if ref in urls_allowed:
-                urls_found.append(ref)
+            urls_found.append(ref)
 
     except:
         pass
 
     return urls_found
-
-
-
-# La fonction permettant d'analyser le fichier robot.txt d'une page, afin de récupérer les liens qu'elle contient qui peuvent être crawlés.
-def analyse_robot(url):
-
-    f = open(url + 'robots.txt', "r")
-    
-    # On initialise la liste des url qui peuvent être crawlés
-    urls_allowed = []
-
-    # On fait un try/except au cas où la page web n'a pas de robots.txt
-    try:
-        for line in f:
-            if line.startswith('Allow'):
-                urls_allowed.append(line.split(': ')[1].split(' ')[0])
-
-    except:
-        pass 
-    
-    return(urls_allowed)
 
 
 
