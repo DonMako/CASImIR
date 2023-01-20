@@ -1,4 +1,5 @@
 from robots import requeter_robot
+import networkx as nx
 import validators
 
 
@@ -15,6 +16,9 @@ def crawler():
 
     # L'indice de départ, afin de ne prendre en URL d'exploration que des URL pas encore testés.
     starting_index = 0
+
+    # On initialise le graphe orienté.
+    G = nx.DiGraph()
 
     # Les conditions d'arrêt du programme : avoir atteint le seuil d'URL demandé par l'utilisateur,
     # ou ne plus trouver de liens à requêter (donc avoir vidé la liste de liens d'exploration).

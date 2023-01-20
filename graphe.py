@@ -2,21 +2,21 @@
 
 
 
-import networkx as nx
 import io
 import base64
 
 
 
-def creation_graphe():
+def ajout_arc(graphe, link_depart, link_arrive):
 
-    G = nx.DiGraph()
-    G.add_edge("A", "B", weight=4)
-    G.add_edge("B", "D", weight=2)
-    G.add_edge("A", "C", weight=3)
-    G.add_edge("C", "D", weight=4)
-    
-    return G
+    # Si le graphe possède déjà l'arc, on augmente juste le poids de l'arc
+    if graphe.has_edge(link_depart, link_arrive):
+        graphe[link_depart][link_arrive]["weight"] += 1
+
+    # Sinon, on crée l'arc.
+    else:
+        graphe.add_edge(link_depart, link_arrive, weight=1)
+
 
 
 def fig_to_base64(fig):

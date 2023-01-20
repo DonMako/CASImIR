@@ -1,7 +1,7 @@
 # Cr@wler
 
+## Qu'est-ce que Cr@wler ?
 
-## Qu'est-ce que Cr@wler ?
 Un crawler, appelé également « robot d'indexation », est un logiciel qui a pour principale mission d'explorer le Web afin d'analyser le contenu des documents visités et les stocker de manière organisée dans un index.
 
 Cr@wler est un crawler web simple, ayant pour objectif de récupérer des URL à partir d'un URL de départ, réalisé dans un contexte de familiarisation avec l'indexation web. 
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 python3 main.py
 ```
 
-## To-do list
+## To-do list
 Dans une volonté de prolonger le travail sur Cr@wler, de nouvelles fonctionnalités sont en cours d'écriture:
 
 * la création d'un mini-serveur local permettant d'accéder:
