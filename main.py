@@ -23,7 +23,7 @@ def main(url, threshold):
         result = requeter(liste_urls[starting_index])
         for link in result:
             # On vérifie si on a pas déjà récupéré cet URL, et si cet URL est valide.
-            if link not in liste_urls and validators.url(str(link)) and lang_url(liste_urls, link):
+            if link not in liste_urls and validators.url(str(link)):
                 liste_urls.append(link)
         starting_index += 1
         
@@ -35,7 +35,7 @@ def main(url, threshold):
 
 
 
-# La fonction permettant de trouver d'autres pages à explorer à partir d'un URL, en analysant les balises dudit URL.
+# La fonction permettant de trouver d'autres pages à explorer à partir du code HTML, sans passer par le robots.txt.
 def requeter(url):
 
     urls_found = []
@@ -44,11 +44,13 @@ def requeter(url):
         url_request = request.urlopen(url)
         soup = BS(url_request, 'html.parser')
     
-        # Pour chaque lien de page trouvé, on vérifie que le lien est un URL autorisé à être crawlé.
-        # Si le lien est valide, on l'ajoute dans les liens trouvés.
         for link in soup.find_all('a'):
-            ref = link.get('href')
-            urls_found.append(ref)
+            # On regarde si le lien possède l'attribut 'rel', 
+            # et on regarde si cet attribut indique que le lien est une version alternative de la page requêtée.
+            if hasattr(link, 'rel'):
+                if link.get('rel') == "alternate":
+                    ref = link.get('href')
+                    urls_found.append(ref)
 
     except:
         pass
@@ -80,28 +82,6 @@ def requeter_robot(liste_urls, url):
             pass
 
     return urls_allowed
-    
-
-
-# La fonction permettant de détecter si une page n'est pas la version dans une autre langue d'une page déjà indexée.
-def lang_url(liste_urls, url):
-
-    # On initalise le booléen permettant de savoir si l'URL est bien celui d'une page inconnue.
-    bool = True
-
-    try:
-        url_request = request.urlopen(url)
-        soup = BS(url_request, 'html.parser')
-
-        for link in soup.find_all('a'):
-            # On regarde si la page html de l'URL ne contient pas des pages alternative déjà indexées.
-            if link.get('rel') == "alternate" and link.get('href') in liste_urls:
-                bool = False    
-
-    except:
-        pass
-
-    return bool
 
 
 
