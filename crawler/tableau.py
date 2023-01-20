@@ -2,7 +2,7 @@ import pandas as pd
 
 
 
-def generate_tableau():
+def generate_table():
     
     urls = pd.read_csv("crawled_webpages.txt", header = None)
     urls.columns = ['Links']

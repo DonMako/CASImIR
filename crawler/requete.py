@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as BS
 
 
 
-def requeter(url):
+def request(url):
 
     urls_found = []
     
