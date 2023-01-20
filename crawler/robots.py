@@ -4,7 +4,7 @@
 
 from urllib import parse
 from urllib import robotparser
-from requete import requeter
+from crawler.requete import requeter
 
 
 

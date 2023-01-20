@@ -2,7 +2,7 @@
 
 
 
-from graphe import fig_to_base64
+from crawler.graphe import fig_to_base64
 
 
 

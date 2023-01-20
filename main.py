@@ -1,6 +1,6 @@
-from graphe import ajout_arc
-from robots import requeter_robot
-from tableau import generate_tableau
+from crawler.graphe import ajout_arc
+from crawler.robots import requeter_robot
+from crawler.tableau import generate_tableau
 import networkx as nx
 import validators
 
