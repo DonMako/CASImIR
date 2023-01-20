@@ -4,7 +4,10 @@ import validators
 
 
 # La fonction principale, permettant de boucler les recherches sur les URL, afin d'atteindre le seuil d'URL demandé par l'utilisateur.
-def main(url, threshold):
+def crawler():
+
+    url = input("Enter the starting url : ")
+    threshold = input("Enter the threshold desired : ")
 
     # On stocke les urls des pages déjà croisées, pour ne pas avoir de doublon.
     liste_urls = []
@@ -32,6 +35,5 @@ def main(url, threshold):
 
 
 
-url_user = input("Enter the starting url : ")
-threshold_user = input("Enter the threshold desired : ")
-main(url_user, threshold_user)
+if __name__ == '__main__':
+    crawler()

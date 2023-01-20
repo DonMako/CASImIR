@@ -15,14 +15,16 @@ def requeter_robot(url):
 
     urls_allowed =[]
 
-    # On fait un try/else au cas où la page n'ait pas de robots.txt.
+    # On fait un try/else au cas où l'URL requêté n'a pas de robots.txt.
     try:
         parser = robotparser.RobotFileParser()
         parser.set_url(base_url)
         parser.read()
         sitemaps = parser.site_maps()
+
         if sitemaps != None:
             urls_allowed = sitemaps
+        
         else:
             # Si le robots.txt ne contient pas de sitemaps nous permettant de récupérer des URL,
             # on requête les URL en crawlant directement le code HTML de l'URL requêté.
