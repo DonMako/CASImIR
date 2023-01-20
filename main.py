@@ -1,7 +1,4 @@
-from urllib import parse
-from urllib import robotparser
-from urllib import request
-from bs4 import BeautifulSoup as BS
+from robots import requeter_robot
 import validators
 
 
@@ -32,54 +29,6 @@ def main(url, threshold):
         f.write(link)
         f.write("\n")
     f.close()
-
-
-
-# La fonction pour requêter le robots.txt d'un URL.
-def requeter_robot(url):
-    
-    o = parse.urlparse(url)
-    base_url = "https://" + str(o.hostname)
-
-    urls_allowed =[]
-
-    # On fait un try/else au cas où la page n'ait pas de robots.txt.
-    try:
-        parser = robotparser.RobotFileParser()
-        parser.set_url(base_url)
-        parser.read()
-        sitemaps = parser.site_maps()
-        if sitemaps != None:
-            urls_allowed = sitemaps
-        else:
-            # Si le robots.txt ne contient pas de sitemaps nous permettant de récupérer des URL,
-            # on requête les URL en crawlant directement le code HTML de l'URL requêté.
-            urls_allowed = requeter(url)
-
-    except:
-        urls_allowed = requeter(url)
-
-    return urls_allowed
-
-
-
-# La fonction permettant de trouver d'autres pages à explorer à partir du code HTML, sans passer par le robots.txt.
-def requeter(url):
-
-    urls_found = []
-    
-    try:
-        url_request = request.urlopen(url)
-        soup = BS(url_request, 'html.parser')
-    
-        for link in soup.find_all('a'):
-            ref = link.get('href')
-            urls_found.append(ref)
-
-    except:
-        pass
-
-    return urls_found
 
 
 
