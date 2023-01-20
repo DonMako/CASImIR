@@ -1,3 +1,4 @@
+from tableau import generate_tableau
 from robots import requeter_robot
 import networkx as nx
 import validators
@@ -36,6 +37,8 @@ def crawler():
         f.write(link)
         f.write("\n")
     f.close()
+
+    generate_tableau()
 
 
 
