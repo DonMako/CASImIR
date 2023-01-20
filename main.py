@@ -20,7 +20,7 @@ def main(url, threshold):
     # ou ne plus trouver de liens à requêter (donc avoir vidé la liste de liens d'exploration).
     while len(liste_urls) < int(threshold) and starting_index < len(liste_urls):
 
-        result = requeter(liste_urls[starting_index])
+        result = requeter_robot(liste_urls[starting_index])
         for link in result:
             # On vérifie si on a pas déjà récupéré cet URL, et si cet URL est valide.
             if link not in liste_urls and validators.url(str(link)):
@@ -32,6 +32,34 @@ def main(url, threshold):
         f.write(link)
         f.write("\n")
     f.close()
+
+
+
+# La fonction pour requêter le robots.txt d'un URL.
+def requeter_robot(url):
+    
+    o = parse.urlparse(url)
+    base_url = "https://" + str(o.hostname)
+
+    urls_allowed =[]
+
+    # On fait un try/else au cas où la page n'ait pas de robots.txt.
+    try:
+        parser = robotparser.RobotFileParser()
+        parser.set_url(base_url)
+        parser.read()
+        sitemaps = parser.site_maps()
+        if sitemaps != None:
+            urls_allowed = sitemaps
+        else:
+            # Si le robots.txt ne contient pas de sitemaps nous permettant de récupérer des URL,
+            # on requête les URL en crawlant directement le code HTML de l'URL requêté.
+            urls_allowed = requeter(url)
+
+    except:
+        urls_allowed = requeter(url)
+
+    return urls_allowed
 
 
 
@@ -52,32 +80,6 @@ def requeter(url):
         pass
 
     return urls_found
-
-
-
-# La fonction pour récupérer le robots.txt d'un URL, après avoir vérifié que le robots.txt n'avait pas déjà été récupéré.
-def requeter_robot(liste_urls, url):
-    
-    o = parse.urlparse(url)
-    base_url = "https://" + o.hostname
-
-    # On vérifié que l'URL n'a pas déjà été rencontré (donc qu'on a pas encore récupéré)
-    if base_url not in liste_urls:
-    
-        urls_allowed =[]
-
-        try:
-            parser = robotparser.RobotFileParser()
-            parser.set_url(base_url)
-            parser.read()
-            sitemaps = parser.site_maps()
-            if sitemaps != None:
-                urls_allowed = sitemaps
-
-        except:
-            pass
-
-    return urls_allowed
 
 
 
