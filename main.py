@@ -45,12 +45,8 @@ def requeter(url):
         soup = BS(url_request, 'html.parser')
     
         for link in soup.find_all('a'):
-            # On regarde si le lien possède l'attribut 'rel', 
-            # et on regarde si cet attribut indique que le lien est une version alternative de la page requêtée.
-            if hasattr(link, 'rel'):
-                if link.get('rel') == "alternate":
-                    ref = link.get('href')
-                    urls_found.append(ref)
+            ref = link.get('href')
+            urls_found.append(ref)
 
     except:
         pass
