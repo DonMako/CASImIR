@@ -1,13 +1,9 @@
-# La fonction permettant de trouver d'autres pages à explorer à partir du code HTML, sans passer par le robots.txt.
-
-
-
 from urllib import request
 from bs4 import BeautifulSoup as BS
 
 
 
-def request(url):
+def request_function(url):
 
     urls_found = []
     

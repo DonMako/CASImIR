@@ -1,7 +1,3 @@
-# La fonction pour afficher le graphe orienté sur un serveur local
-
-
-
 from crawler.graphe import fig_to_base64
 
 
