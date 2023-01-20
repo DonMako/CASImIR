@@ -1,6 +1,6 @@
-from crawler.graphe import add_edge
+from visualisation.graphe import add_edge
 from crawler.robots import request_robots
-from crawler.tableau import generate_table
+from visualisation.table import generate_table
 import networkx as nx
 import validators
 

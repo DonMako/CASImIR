@@ -1,4 +1,4 @@
-from crawler.graphe import fig_to_base64
+from visualisation.graphe import fig_to_base64
 
 
 

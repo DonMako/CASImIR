@@ -1,6 +1,6 @@
 from urllib import parse
 from urllib import robotparser
-from crawler.requete import request
+from crawler.request import request_function
 
 
 
@@ -20,9 +20,9 @@ def request_robots(url):
         if sitemaps != None:
             urls_allowed = sitemaps
         else:
-            urls_allowed = request(url)
+            urls_allowed = request_function(url)
 
     except:
-        urls_allowed = request(url)
+        urls_allowed = request_function(url)
 
     return urls_allowed
