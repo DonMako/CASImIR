@@ -25,3 +25,10 @@ cd crawler
 pip install -r requirements.txt
 python3 main.py
 ```
+
+## To-do list
+Dans une volonté de prolonger le travail sur Cr@wler, de nouvelles fonctionnalités sont en cours d'écriture:
+
+* la création d'un mini-serveur local permettant d'accéder:
+    + à la liste des URLs crawlés, et de téléchager ladite liste sous différents formats (xls, csv)
+    + à un graphe orienté montrant visuellement les liens entre les URLs crawlés
