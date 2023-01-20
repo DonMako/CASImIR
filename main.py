@@ -1,5 +1,6 @@
-from tableau import generate_tableau
+from graphe import ajout_arc
 from robots import requeter_robot
+from tableau import generate_tableau
 import networkx as nx
 import validators
 
@@ -30,6 +31,7 @@ def crawler():
             # On vérifie si on a pas déjà récupéré cet URL, et si cet URL est valide.
             if link not in liste_urls and validators.url(str(link)):
                 liste_urls.append(link)
+                ajout_arc(G, liste_urls[starting_index], link)
         starting_index += 1
         
     f = open("crawled_webpages.txt", "w")
