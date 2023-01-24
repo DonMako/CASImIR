@@ -1,15 +1,15 @@
-def add_edge(graphe, link_depart, link_arrive):
+def add_edge(graphe, depart, arrive):
 
-    if graphe.has_edge(link_depart, link_arrive):
-        graphe[link_depart][link_arrive]["weight"] += 1
+    if graphe.has_edge(depart, arrive):
+        graphe[depart][arrive]["weight"] += 1
 
     else:
-        graphe.add_edge(link_depart, link_arrive, weight=1)
+        graphe.add_edge(depart, arrive, weight=1)
 
 
 
-def add_node(graphe, link):
+def add_node(graphe, token):
 
-    if graphe.has_node(link):
-        graphe.add_node(link)
+    if not(graphe.has_node(token)):
+        graphe.add_node(token)
 
