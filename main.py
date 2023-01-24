@@ -1,8 +1,8 @@
-from graphe.graphe import add_edge
 from crawler.robots import request_robots
+from graphe.graphe import add_edge, add_node
+from graphe.token import tokenise_list, tokenise
 from visualisation.table import generate_table
 import networkx as nx
-import validators
 
 
 
@@ -15,16 +15,19 @@ def crawler():
     list_urls.append(url)
 
     starting_index = 0
-
     G = nx.Graph()
 
     while len(list_urls) < int(threshold) and starting_index < len(list_urls):
 
-        result = request_robots(list_urls[starting_index])
-        for link in result:
-            if link not in list_urls and validators.url(str(link)):
-                list_urls.append(link)
-                add_edge(G, list_urls[starting_index], link)
+        url_request = list_urls[starting_index]
+        result = request_robots(url_request)
+        tokens_result = tokenise_list(result)
+        tokens_request = tokenise(url_request)
+        for list_token in tokens_result:
+            for token in list_token:
+                add_node(G, token)
+                for token_init in tokens_request:
+                    add_edge(G, token_init, token)
 
         starting_index += 1
         

@@ -1,5 +1,6 @@
 from urllib import request
 from bs4 import BeautifulSoup as BS
+import validators
 
 
 
@@ -13,7 +14,8 @@ def request_function(url):
     
         for link in soup.find_all('a'):
             ref = link.get('href')
-            urls_found.append(ref)
+            if validators.url(str(ref)):
+                urls_found.append(ref)
 
     except:
         pass

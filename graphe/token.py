@@ -16,3 +16,11 @@ def tokenise(url):
         pass
 
     return title.split(" ")
+
+
+def tokenise_list(list):
+
+    list_tokens = []
+    for url in list:
+        list_tokens.append(tokenise(url))
+    return list_tokens
