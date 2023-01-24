@@ -1,4 +1,4 @@
-from visualisation.graphe import add_edge
+from graphe.graphe import add_edge
 from crawler.robots import request_robots
 from visualisation.table import generate_table
 import networkx as nx

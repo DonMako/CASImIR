@@ -1,4 +1,4 @@
-from visualisation.graphe import fig_to_base64
+from graphe.graphe import fig_to_base64
 import urllib
 
 
