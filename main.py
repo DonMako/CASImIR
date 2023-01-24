@@ -1,10 +1,10 @@
 from crawler.crawler import crawl
-from visualisation.table import generate_table
+from table.table import generate_table
 import networkx as nx
 
 
 
-def crawler():
+def main():
 
     url = input("Enter the starting url : ")
     threshold = input("Enter the threshold desired : ")
@@ -17,15 +17,9 @@ def crawler():
 
     crawl(list_urls, starting_index, threshold, G)
         
-    f = open("crawled_webpages.txt", "w")
-    for link in list_urls[:int(threshold)]:
-        f.write(link)
-        f.write("\n")
-    f.close()
-
-    generate_table()
+    generate_table(list_urls, threshold)
 
 
 
 if __name__ == '__main__':
-    crawler()
+    main()
