@@ -3,6 +3,7 @@ import pandas as pd
 
 
 def write_table(list_urls, threshold):
+    
     f = open("crawled_webpages.txt", "w")
     for link in list_urls[:int(threshold)]:
         f.write(link)
