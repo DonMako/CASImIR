@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as BS
 
 
 
-def get_title(url):
+def tokenise(url):
 
     title = " "
     
