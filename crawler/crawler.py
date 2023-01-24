@@ -1,4 +1,4 @@
-from robots import request_robots
+from crawler.robots import request_robots
 from graphe.graphe import add_edge, add_node
 from graphe.token import tokenise_list, tokenise
 

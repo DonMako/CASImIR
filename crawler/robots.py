@@ -1,6 +1,6 @@
 from urllib import parse
 from urllib import robotparser
-from request import request_function
+from crawler.request import request_function
 
 
 
