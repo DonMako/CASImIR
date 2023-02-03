@@ -1,5 +1,5 @@
-from crawler.crawler import crawl
-from table.table import generate_table
+import crawler.crawler_function as crawler_function
+import table.table as table
 import networkx as nx
 
 
@@ -15,9 +15,9 @@ def main():
     starting_index = 0
     G = nx.Graph()
 
-    crawl(list_urls, starting_index, threshold, G)
+    crawler_function.crawl(list_urls, starting_index, threshold, G)
         
-    generate_table(list_urls, threshold)
+    table.generate_CSV(list_urls, threshold)
 
 
 
