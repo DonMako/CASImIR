@@ -1,5 +1,6 @@
 from urllib import request
 from bs4 import BeautifulSoup as BS
+import spacy
 
 
 
@@ -10,14 +11,15 @@ def tokenise(url):
     try:
         url_request = request.urlopen(url)
         soup = BS(url_request, 'html.parser')
-        title = soup.title.text
-
+        nlp = spacy.load("fr_core_news_sm")
+        title = nlp(soup.title.text)
     except:
         pass
 
     return title.split(" ")
 
-
+nlp = spacy.load("fr_core_news_sm")
+print(nlp("Bonjour le chat"))
 
 def tokenise_list(list):
 

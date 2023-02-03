@@ -3,7 +3,6 @@ from graphe.graphe import add_edge, add_node
 from graphe.token import tokenise_list, tokenise
 
 
-
 def crawl(list_urls, starting_index, threshold, graphe):
 
     while len(list_urls) < int(threshold) and starting_index < len(list_urls):
