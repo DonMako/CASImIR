@@ -1,6 +1,16 @@
 from urllib import request
 from bs4 import BeautifulSoup as BS
-import spacy
+from nltk.corpus import stopwords
+
+
+
+def delete_stopwords(text):
+    
+    clean_words = []
+    for word in text:
+        if word not in stopwords:
+            clean_words.append(word)
+    return clean_words
 
 
 
@@ -11,15 +21,13 @@ def tokenise(url):
     try:
         url_request = request.urlopen(url)
         soup = BS(url_request, 'html.parser')
-        nlp = spacy.load("fr_core_news_sm")
-        title = nlp(soup.title.text)
+        title = soup.title.text
     except:
         pass
 
-    return title.split(" ")
+    return delete_stopwords(title.split(" "))
 
-nlp = spacy.load("fr_core_news_sm")
-print(nlp("Bonjour le chat"))
+
 
 def tokenise_list(list):
 

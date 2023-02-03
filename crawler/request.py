@@ -11,7 +11,6 @@ def request_function(url):
     try:
         url_request = request.urlopen(url)
         soup = BS(url_request, 'html.parser')
-    
         for link in soup.find_all('a'):
             ref = link.get('href')
             if validators.url(str(ref)):
