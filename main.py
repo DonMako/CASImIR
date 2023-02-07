@@ -16,8 +16,6 @@ def main():
     G = nx.Graph()
 
     crawler_function.crawl(list_urls, starting_index, threshold, G)
-        
-    table.generate_CSV(list_urls, threshold)
 
 
 
