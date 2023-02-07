@@ -1,5 +1,12 @@
-from django.conf.urls import patterns, include, url
+import jinja2
 
-urlpatterns = patterns('',
-    url(r'^$', 'django.shortcuts.render', {'template_name': 'index.html'}),
-)
+
+
+def display_page(image):
+
+    outputfile = 'myfile.html'
+
+    subs = jinja2.Environment(loader = jinja2.FileSystemLoader('./')).get_template('template.html').render(mydata=image)
+    
+    with open(outputfile,'w') as f:
+        f.write(subs)
