@@ -1,4 +1,4 @@
-import crawler.robots as robots
+import robots
 import graphe.graphe as graphe
 import graphe.token as token_function
 

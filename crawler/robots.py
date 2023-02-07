@@ -1,5 +1,5 @@
 from urllib import parse, robotparser
-import crawler.request_url as request_url
+import request_url
 
 
 
