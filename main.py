@@ -1,6 +1,7 @@
 import crawler.crawler_function as crawler_function
-import table.table as table
 import networkx as nx
+import visualisation.display_page as display_page
+import visualisation.create_graphe as create_graphe
 
 
 
@@ -16,6 +17,10 @@ def main():
     G = nx.Graph()
 
     crawler_function.crawl(list_urls, starting_index, threshold, G)
+
+    create_graphe.create_graphe(G)
+
+    display_page.display_page()
 
 
 
