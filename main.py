@@ -1,4 +1,4 @@
-import crawler.crawler_function as crawler_function
+from crawler import crawler_function
 import networkx as nx
 import visualisation.page as page
 

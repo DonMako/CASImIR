@@ -8,7 +8,7 @@ def delete_stopwords(text):
     
     clean_words = []
     for word in text:
-        if word not in stopwords:
+        if word not in stopwords.words('french'):
             clean_words.append(word)
     return clean_words
 
