@@ -12,4 +12,3 @@ def add_node(graphe, token):
 
     if not(graphe.has_node(token)):
         graphe.add_node(token)
-
