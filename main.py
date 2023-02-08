@@ -13,6 +13,7 @@ def main(url, threshold_urls, threshold_tokens):
     starting_index = 0
     G = nx.Graph()
 
+    crawler_function.modify_graphe(list_urls, starting_index, G)
     crawler_function.crawl(list_urls, starting_index, threshold_urls, threshold_tokens, G)
 
     page.create_graphe(G)
