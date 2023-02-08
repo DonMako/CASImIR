@@ -5,10 +5,7 @@ import visualisation.page as page
 
 
 
-def main():
-
-    url = input("Enter the starting url : ")
-    threshold = input("Enter the threshold desired : ")
+def main(url, threshold):
 
     list_urls = []
     list_urls.append(url)
@@ -25,4 +22,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("url", help = "The URL the program start crawling from", type = str)
+
+    parser.add_argument("threshold", help = "The number of URLs the program need to crawl", type = str)
+    args = parser.parse_args()
+    main(args.url, args.threshold)
