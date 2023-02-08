@@ -1,5 +1,5 @@
-from urllib import request
 from bs4 import BeautifulSoup as BS
+from urllib import request
 import validators
 
 

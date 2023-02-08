@@ -1,3 +1,4 @@
+import argparse
 from crawler import crawler_function
 import networkx as nx
 import visualisation.page as page

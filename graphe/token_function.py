@@ -1,6 +1,6 @@
-from urllib import request
 from bs4 import BeautifulSoup as BS
 from nltk.corpus import stopwords
+from urllib import request
 
 
 
