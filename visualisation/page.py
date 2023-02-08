@@ -7,8 +7,12 @@ import webbrowser
 
 def create_graphe(graphe):
 
+    labels = {}    
+    for node in graphe.nodes(): 
+        labels[node] = node
     pos = nx.spring_layout(graphe, seed=225)
-    nx.draw(graphe, pos)
+    nx.draw_networkx(graphe, pos, node_shape = 's', node_color="None", with_labels=False)
+    nx.draw_networkx_labels(graphe, pos, labels)    
     plt.savefig('graphe.png', format='png')
 
 
@@ -28,10 +32,8 @@ def generate_page(image):
 
 def display_page(file):
 
-    new = 2
-
     url = file
-    webbrowser.open(url,new=new)
+    webbrowser.open(url,new=2)
 
 
 
