@@ -5,7 +5,7 @@ import visualisation.page as page
 
 
 
-def main(url, threshold):
+def main(url, threshold_urls, threshold_tokens):
 
     list_urls = []
     list_urls.append(url)
@@ -13,7 +13,7 @@ def main(url, threshold):
     starting_index = 0
     G = nx.Graph()
 
-    crawler_function.crawl(list_urls, starting_index, threshold, G)
+    crawler_function.crawl(list_urls, starting_index, threshold_urls, threshold_tokens, G)
 
     page.create_graphe(G)
 
@@ -24,7 +24,7 @@ def main(url, threshold):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("url", help = "The URL the program start crawling from", type = str)
-
-    parser.add_argument("threshold", help = "The number of URLs the program need to crawl", type = str)
+    parser.add_argument("threshold_urls", help = "The number of URLs the program need to crawl", type = int)
+    parser.add_argument("threshold_tokens", help = "The number of words the program need to crawl", type = int)
     args = parser.parse_args()
-    main(args.url, args.threshold)
+    main(args.url, args.threshold_urls, args.threshold_tokens)

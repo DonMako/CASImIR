@@ -2,9 +2,9 @@ from crawler import robots
 from graphe import graphe_function, token_function
 
 
-def crawl(list_urls, starting_index, threshold, graphique):
+def crawl(list_urls, starting_index, threshold_urls, threshold_tokens, graphique):
 
-    while len(list_urls) < int(threshold) and starting_index < len(list_urls):
+    while len(list_urls) < threshold_urls and len(graphique.edges()) < threshold_tokens and starting_index < len(list_urls):
 
         url_request = list_urls[starting_index]
         result = robots.request_robots(url_request)
