@@ -4,7 +4,7 @@ def add_edge(graphe, depart, arrive):
         graphe[depart][arrive]["weight"] += 1
 
     else:
-        graphe.add_edge(depart, arrive, weight=1)
+        graphe.add_edge(depart, arrive, weight = 1)
 
 
 
