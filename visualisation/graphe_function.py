@@ -28,7 +28,7 @@ def set_node(graphe: nx.Graph, token: str):
 
 def create_graphe(graphe: nx.Graph):
 
-    labels = {}    
+    labels = {}
     for node in graphe.nodes():
         labels[node] = node
     pos = nx.spring_layout(graphe)
