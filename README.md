@@ -31,5 +31,4 @@ Dans une volonté de prolonger le travail sur Cr@wler, de nouvelles fonctionnali
 
 * la création d'un mini-serveur local permettant d'accéder:
     + à la liste des URLs crawlés, et de téléchager ladite liste sous différents formats (xls, csv, json)
-    + à un graphe orienté montrant visuellement les liens entre les URLs crawlés
 * le multi-threading du crawler
