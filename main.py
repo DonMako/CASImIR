@@ -8,13 +8,12 @@ import webbrowser
 
 def main(url: str, threshold_urls: int):
 
-    list_urls = []
-    list_urls.append(url)
-
+    list_urls = [url]
     starting_index = 0
     G = nx.Graph()
 
-    crawler_function.modify_graphe(list_urls, starting_index, G)
+    graphe.set_node(G, url)
+
     crawler_function.crawl(list_urls, starting_index, threshold_urls, G)
 
     graphe.create_graphe(G)
