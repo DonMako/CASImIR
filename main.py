@@ -24,6 +24,7 @@ def main(url: str, threshold_urls: int):
 
 
 if __name__ == '__main__':
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("url", help = "The URL the program start crawling from", type = str)
     parser.add_argument("threshold", help = "The number of URLs the program need to crawl", type = int)
