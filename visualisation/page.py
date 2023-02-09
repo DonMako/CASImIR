@@ -1,19 +1,5 @@
 import jinja2
-import matplotlib.pyplot as plt
-import networkx as nx
 import webbrowser
-
-
-
-def create_graphe(graphe):
-
-    labels = {}    
-    for node in graphe.nodes(): 
-        labels[node] = node
-    pos = nx.spring_layout(graphe, seed=225)
-    nx.draw_networkx(graphe, pos, node_shape = 's', node_color="None", with_labels=False)
-    nx.draw_networkx_labels(graphe, pos, labels)    
-    plt.savefig('graphe.png', format='png')
 
 
 
