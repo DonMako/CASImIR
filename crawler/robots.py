@@ -1,12 +1,11 @@
-from clean_function import clean_url
-from crawler import request_url
+from crawler import clean_function, request_url
 from urllib import robotparser
 
 
 
 def request_robots(url):
     
-    base_url = clean_url(url)
+    base_url = clean_function.clean_url(url)
 
     urls_allowed =[]
 
