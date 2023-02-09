@@ -5,7 +5,7 @@ from urllib import parse
 def clean_url(url):
 
     o = parse.urlparse(url)
-    return (o.scheme + o.netloc) 
+    return (o.scheme + "://" + o.netloc) 
 
 
 
