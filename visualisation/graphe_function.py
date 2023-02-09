@@ -36,6 +36,3 @@ def create_graphe(graphe: nx.Graph):
     nx.draw_networkx_labels(graphe, pos, labels)
     plt.tight_layout()
     plt.savefig("./visualisation/graphe.png", bbox_inches = "tight", pad_inches = 0, format = "png")
-
-
-print(len("https://ensai.fr/"))
