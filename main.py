@@ -1,6 +1,7 @@
 import argparse
 from crawler import crawler_function
 import networkx as nx
+import visualisation.graphe_function as graphe
 import visualisation.page as page
 
 
@@ -16,7 +17,7 @@ def main(url, threshold_urls):
     crawler_function.modify_graphe(list_urls, starting_index, G)
     crawler_function.crawl(list_urls, starting_index, threshold_urls, G)
 
-    page.create_graphe(G)
+    graphe.create_graphe(G)
 
     page.display_page('graphe.png')
 
