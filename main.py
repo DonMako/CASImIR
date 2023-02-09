@@ -2,7 +2,7 @@ import argparse
 from crawler import crawler_function
 import networkx as nx
 import visualisation.graphe_function as graphe
-import visualisation.page as page
+import webbrowser
 
 
 
@@ -19,7 +19,7 @@ def main(url, threshold_urls):
 
     graphe.create_graphe(G)
 
-    page.display_page()
+    webbrowser.open_new("./visualisation/template.html")
 
 
 
