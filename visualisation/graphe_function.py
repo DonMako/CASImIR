@@ -28,4 +28,4 @@ def create_graphe(graphe):
     pos = nx.spring_layout(graphe, seed=225)
     nx.draw_networkx(graphe, pos, node_shape = 's', node_color="None", with_labels=False)
     nx.draw_networkx_labels(graphe, pos, labels)    
-    plt.savefig('graphe.png', format='png')
+    plt.savefig('graphe.png', bbox_inches='tight', pad_inches=0, format='png')
