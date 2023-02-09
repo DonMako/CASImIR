@@ -17,7 +17,7 @@ def modify_graphe(list_urls, starting_index, graphique):
 
 def crawl(list_urls, starting_index, threshold, graphique):
 
-    while len(graphique.nodes()) < threshold and starting_index < len(list_urls):
+    while graphique.number_of_nodes() < threshold and starting_index < len(list_urls):
 
         modify_graphe(list_urls, starting_index, graphique)        
 
