@@ -19,7 +19,7 @@ def main(url, threshold_urls):
 
     graphe.create_graphe(G)
 
-    webbrowser.open_new("./visualisation/template.html")
+    webbrowser.open("./visualisation/template.html", new=2)
 
 
 
