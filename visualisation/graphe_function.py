@@ -6,7 +6,7 @@ import networkx as nx
 def add_edge(graphe, depart, arrive):
 
     if graphe.has_edge(depart, arrive):
-        graphe[depart][arrive]["weight"] += 1
+        pass
 
     else:
         graphe.add_edge(depart, arrive, weight = 1)
