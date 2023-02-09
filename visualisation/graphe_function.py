@@ -3,26 +3,26 @@ import networkx as nx
 
 
 
-def add_edge(graphe, depart, arrive):
+def set_edge(graphe, depart, arrive):
 
     if graphe.has_edge(depart, arrive):
         pass
 
     else:
-        graphe.add_edge(depart, arrive, weight = 1)
+        graphe.add_edge(depart, arrive)
 
 
 
-def node_size(token):
+def get_node_size(token):
 
-    return(len(token)*100)
+    return(len(token))
 
 
 
-def add_node(graphe, token):
+def set_node(graphe, token):
 
     if not(graphe.has_node(token)):
-        graphe.add_node(token, size=node_size(token))
+        graphe.add_node(token, node_size = get_node_size(token))
 
 
 

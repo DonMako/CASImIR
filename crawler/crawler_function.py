@@ -10,8 +10,8 @@ def modify_graphe(list_urls, starting_index, graphique):
     url_list = clean_function.clean_list(result)
     base_url = clean_function.clean_url(url_request)
     for url in url_list:
-        graphe_function.add_node(graphique, url)
-        graphe_function.add_edge(graphique, base_url, url)
+        graphe_function.set_node(graphique, url)
+        graphe_function.set_edge(graphique, base_url, url)
 
 
 
