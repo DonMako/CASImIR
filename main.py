@@ -6,7 +6,7 @@ import webbrowser
 
 
 
-def main(url, threshold_urls):
+def main(url: str, threshold_urls: int):
 
     list_urls = []
     list_urls.append(url)

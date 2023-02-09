@@ -3,7 +3,7 @@ from urllib import robotparser
 
 
 
-def request_robots(url):
+def request_robots(url: str):
     
     base_url = clean_function.clean_url(url)
 

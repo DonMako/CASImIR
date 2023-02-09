@@ -4,7 +4,7 @@ import validators
 
 
 
-def request_function(url):
+def request_function(url: str):
 
     urls_found = []
     
@@ -13,7 +13,7 @@ def request_function(url):
         soup = BS(url_request, 'html.parser')
         for link in soup.find_all('a'):
             ref = link.get('href')
-            if validators.url(str(ref)):
+            if validators.url(ref):
                 urls_found.append(ref)
 
     except:

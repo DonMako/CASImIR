@@ -3,7 +3,7 @@ import networkx as nx
 
 
 
-def set_edge(graphe, depart, arrive):
+def set_edge(graphe: nx.Graph, depart: str, arrive: str):
 
     if graphe.has_edge(depart, arrive):
         pass
@@ -13,20 +13,20 @@ def set_edge(graphe, depart, arrive):
 
 
 
-def get_node_size(token):
+def get_node_size(token: str):
 
     return(len(token))
 
 
 
-def set_node(graphe, token):
+def set_node(graphe: nx.Graph, token: str):
 
     if not(graphe.has_node(token)):
         graphe.add_node(token, node_size = get_node_size(token))
 
 
 
-def create_graphe(graphe):
+def create_graphe(graphe: nx.Graph):
 
     labels = {}    
     for node in graphe.nodes():

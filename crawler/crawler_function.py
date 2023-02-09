@@ -1,9 +1,10 @@
 from crawler import clean_function, robots
+import networkx as nx
 from visualisation import graphe_function
 
 
 
-def modify_graphe(list_urls, starting_index, graphique):
+def modify_graphe(list_urls: list, starting_index: int, graphique: nx.Graph):
 
     url_request = list_urls[starting_index]
     result = robots.request_robots(url_request)
@@ -15,7 +16,7 @@ def modify_graphe(list_urls, starting_index, graphique):
 
 
 
-def crawl(list_urls, starting_index, threshold, graphique):
+def crawl(list_urls: list, starting_index: int, threshold: int, graphique: nx.Graph):
 
     while graphique.number_of_nodes() < threshold and starting_index < len(list_urls):
 
