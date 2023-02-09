@@ -19,7 +19,7 @@ def main(url, threshold_urls):
 
     graphe.create_graphe(G)
 
-    page.display_page('graphe.png')
+    page.display_page()
 
 
 

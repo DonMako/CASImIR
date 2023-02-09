@@ -23,9 +23,9 @@ def add_node(graphe, token):
 def create_graphe(graphe):
 
     labels = {}    
-    for node in graphe.nodes(): 
+    for node in graphe.nodes():
         labels[node] = node
     pos = nx.spring_layout(graphe)
     nx.draw_networkx(graphe, pos, node_shape = 's', node_color="yellow", with_labels=False)
     nx.draw_networkx_labels(graphe, pos, labels)    
-    plt.savefig('graphe.png', bbox_inches='tight', pad_inches=0, format='png')
+    plt.savefig('./visualisation/graphe.png', bbox_inches='tight', pad_inches=0, format='png')
