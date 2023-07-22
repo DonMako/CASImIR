@@ -27,8 +27,11 @@ python3 main.py
 ```
 
 ## To-do list
-Dans une volonté de prolonger le travail sur Cr@wler, de nouvelles fonctionnalités sont en cours d'écriture:
+Dans une volonté de prolonger le travail sur Cr@wler, de nouvelles fonctionnalités sont en cours de réalisation:
 
 * la création d'un mini-serveur local permettant d'accéder:
-    + à la liste des URLs crawlés, et de téléchager ladite liste sous différents formats (xls, csv, json)
+    + à un formulaire permettant de lancer la requête
+    + de téléchager la liste des URLS crawlés sous différents formats (xls, csv, json)
+    + de récupérer les pièces jointes détectées par le crawler sur les pages rencontrées, selon un type rentré par l'utilisateur (PDF, xls, png)
 * le multi-threading du crawler
+* une détection des pubs afin d'éviter au crawler de travailler sur des pages inutiles
