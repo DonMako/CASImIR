@@ -46,7 +46,23 @@
     </body>
 
   </head>
-  <body >  
+  <body >
+    
+    <form action="/my-handling-form-page" method="post">
+			<ul>
+				<li>
+					<label for="url_depart">URL de départ:</label>
+					<input type="text" id="url" name="url_depart" />
+				</li>
+				<li>
+					<label for="url_threshold">URL threshold:</label>
+					<input type="text" id="threshold" name="url_threshold" />
+				</li>
+				<li class="button">
+					<button type="submit">Envoyer la requête</button>
+				</li>
+			</ul>
+		</form>
 
     <h1> Graphe orienté des URLs crawled </h1>
 
