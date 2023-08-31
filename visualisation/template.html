@@ -4,14 +4,65 @@
     <style>
     h1 {text-align: center;}
     img {display: block; margin:0; margin-left: auto; margin-right: auto;}
+    form {/* pour centrer le formulaire sur la page */
+        margin: 0 auto;
+        width: 400px;
+        /* pour voir le contour du formulaire */
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 1em;
+    }
+    ul {list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    form li + li {margin-top: 1em;}
+    label {/* pour que tous les labels aient la même taille et soient alignés */
+        display: inline-block;
+        width: 90px;
+        text-align: right;
+    }
+    input,
+    textarea {font: 1em sans-serif;
+        /* pour que les champs de texte aient tous la même taille */
+        width: 300px;
+        box-sizing: border-box;
+        border: 1px solid #999;
+    }
+    input:focus,
+    textarea:focus {border-color: #000;}
+    textarea {/* pour aligner les champs de texte multilignes avec leur label */
+        vertical-align: top;
+        height: 5em;
+    }
+    .button {/* pour positionner le bouton à la même position que les champs de texte */
+        padding-left: 90px;
+        /* la même taille que les labels */
+    }
+    button {margin-left: 0.5em;}
     </style> 
-
     <body
       style = background-color:white>
     </body>
 
   </head>
-  <body >  
+  <body >
+    
+    <form action="/my-handling-form-page" method="post">
+			<ul>
+				<li>
+					<label for="url_depart">URL de départ:</label>
+					<input type="text" id="url" name="url_depart" />
+				</li>
+				<li>
+					<label for="url_threshold">URL threshold:</label>
+					<input type="text" id="threshold" name="url_threshold" />
+				</li>
+				<li class="button">
+					<button type="submit">Envoyer la requête</button>
+				</li>
+			</ul>
+		</form>
 
     <h1> Graphe orienté des URLs crawled </h1>
 
