@@ -1,22 +1,10 @@
 from datetime import datetime
-from multiprocessing.dummy import Value
-import validators
 
 from bokeh.io import curdoc
 
 from bokeh.layouts import column, row
-from bokeh.models import (
-    PasswordInput,
-    TableColumn,
-    TextInput,
-)
-from bokeh.models.widgets import Button, Div, Dropdown
-
-# conn = pyodbc.connect(
-#    "DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;PORT= 5432;DATABASE=y;UID=root;PWD=123456789;"
-# )
-# cursor = conn.cursor()
-
+from bokeh.models import PasswordInput, TextInput
+from bokeh.models.widgets import Button, Div
 
 # L'ÉCRAN DE CONNEXION
 
@@ -32,12 +20,7 @@ password = PasswordInput(title="Mot de passe :", margin=(0, 0, 10, 700))
 valider = Button(label="SE CONNECTER", margin=(0, 0, 10, 700))
 effacer = Button(label="effacer", button_type="light")
 
-picto = Div(text="<img src='myapp/static/ecoute.jpg'>", margin=(250, 0, 0, 10))
-header = Div(text="<img src='myapp/static/header.png'>", margin=(0, 15, 0, -10))
-logo = Div(
-    text="<a href='https://air.defense.gouv.fr/'><img src='myapp/static/logo.png'></a>",
-    margin=(50, 0, 0, 120),
-)
+logo = Div(text="<img src='myapp/static/logo.png'>", margin=(0, 15, 0, -10))
 
 alert = Div(
     text="<a style='background-color: rgb(255, 238, 221); outline: solid red;'>Les informations transmises n'ont pas permis de vous authentifier.</a>",
@@ -86,22 +69,6 @@ comment = TextInput(title="Commentaire éventuel :", margin=(0, 0, 10, 700))
 bouton = Button(label="VALIDER", button_type="success", margin=(15, 0, 0, 725))
 
 
-def verif():
-    if (
-        datetime.strptime(date.value, "%Y-%m-%d")
-        and isinstance(duree.value, int)
-        and validators.url(url.value)
-    ):
-        bouton.button_type = "success"
-    else:
-        date.value = datetime.today().strftime("%Y-%m-%d")
-        duree.value = ""
-        url.value = ""
-
-
-bouton.on_click(verif)
-
-
 # LA PAGE PROFIL
 
 mdp = TextInput(title="Mot de passe :", margin=(0, 0, 10, 700))
@@ -123,51 +90,11 @@ success = Div(
 
 # LA PAGE POUR CONSULTER / TÉLÉCHARGER LES DONNÉES
 
-options = ["Afficher par 10", "Afficher par 20", "Afficher par 50", "Afficher par 100"]
-liste_deroul = Dropdown(label="Afficher par 20", menu=options, margin=(0, 0, 10, 700))
-
-dico = {
-    "urls": [
-        "http://example.com/back.htm?basket=airport",
-        "https://adjustment.example.com/beds",
-        "http://advertisement.example.com/?amusement=blow",
-        "http://www.example.com/?activity=believe",
-        "https://airport.example.com/approval.php?acoustics=back",
-        "https://ants.example.edu/afternoon",
-        "http://branch.example.com/bikes/books",
-        "https://bat.example.com/",
-        "https://www.example.com/",
-        "http://arm.example.com/",
-        "http://afternoon.example.com/",
-        "http://www.example.com/account.htm",
-    ],
-    "comments": [
-        "Images choquantes d'une attaque sur des civils",
-        "",
-        "Meurtres avec violences",
-        "Mise à mort de soldats rebelles",
-        "Attentat suicide d'un terroriste islamique",
-        "Attaque au véhicule blindé sur des civils dans le centre-ville",
-        "Lapidation d'un soldat",
-        "Vidéo de meurtre d'otages",
-        "Décapitation",
-        "",
-        "Tirs de roquette sur un convoi humanitaire",
-        "Attaque de journalistes européens",
-    ],
-}
-
-
-columns = [
-    TableColumn(field="urls", title="URLs"),
-    TableColumn(field="comments", title="Commentaires"),
-]
-
 
 # LES CHANGEMENTS DE PAGE
 
 page = column(
-    column(row(logo, header), identifier, password, row(valider, effacer), picto)
+    column(logo, identifier, password, row(valider, effacer))
 )
 
 
@@ -175,7 +102,7 @@ def deconnect():
     efface()
     page.children.pop()
     page.children.append(
-        column(row(logo, header), identifier, password, row(valider, effacer), picto)
+        column(logo, identifier, password, row(valider, effacer))
     )
 
 
@@ -196,9 +123,7 @@ def connect():
             page.children.pop()
             page.children.append(
                 column(
-                    row(
-                        logo,
-                        header,
+                    row(logo,
                         column(row(bonhomme, profil), row(deco, home_button)),
                     ),
                     TextInput(
@@ -218,9 +143,7 @@ def connect():
             page.children.pop()
             page.children.append(
                 column(
-                    row(
-                        logo,
-                        header,
+                    row(logo,
                         column(row(bonhomme, profil), row(deco, home_button)),
                     ),
                     row(t1, t01, t2, t02),
@@ -231,12 +154,11 @@ def connect():
         page.children.pop()
         page.children.append(
             column(
-                row(logo, header),
+                logo,
                 alert,
                 identifier,
                 password,
                 row(valider, effacer),
-                picto,
             )
         )
 
@@ -247,14 +169,13 @@ def access_profil():
     page.children.pop()
     page.children.append(
         column(
-            row(logo, header, column(row(home, retour), row(deco, home_button))),
+            row(logo, column(row(home, retour), row(deco, home_button))),
             TextInput(
                 value=val, title="Identifiant :", disabled=True, margin=(0, 0, 10, 700)
             ),
             mdp,
             confirm,
             chgt,
-            picto,
         )
     )
 
@@ -265,7 +186,7 @@ def change():
         page.children.pop()
         page.children.append(
             column(
-                row(logo, header, column(row(home, retour), row(deco, home_button))),
+                row(logo, column(row(home, retour), row(deco, home_button))),
                 TextInput(
                     value=val,
                     title="Identifiant :",
@@ -276,7 +197,6 @@ def change():
                 confirm,
                 chgt,
                 success,
-                picto,
             )
         )
         liste_connexion[val] = mdp.value
@@ -285,7 +205,7 @@ def change():
         page.children.pop()
         page.children.append(
             column(
-                row(logo, header, column(row(home, retour), row(deco, home_button))),
+                row(logo, column(row(home, retour), row(deco, home_button))),
                 pb,
                 TextInput(
                     value=val,
@@ -296,16 +216,8 @@ def change():
                 mdp,
                 confirm,
                 chgt,
-                picto,
             )
         )
-
-
-def handler(event):
-    liste_deroul.label = event.item
-
-
-liste_deroul.on_click(handler)
 
 chgt.on_click(change)
 
