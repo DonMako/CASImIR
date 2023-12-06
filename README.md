@@ -1,39 +1,35 @@
-# Cr@wler
+# Cr@wleye
 
-## Qu'est-ce que Cr@wler ?
+## Qu'est-ce que Cr@wleye ?
 
-Un crawler, appelé également « robot d'indexation », est un logiciel qui a pour principale mission d'explorer le Web afin d'analyser le contenu des documents visités et les stocker de manière organisée dans un index.
+Un crawler, appelé également « robot d'indexation », est un logiciel qui a généralement pour principale mission d'explorer le Web afin de collecter les ressources (pages Web, images, vidéos, etc.), pour permettre à un moteur de recherche de les indexer.
 
-Cr@wler est un crawler web ayant pour objectif de récupérer des URLs à partir d'un URL de départ. 
+Cr@wleye est un crawler web basé sur l'IA ayant objectif de récupérer des images correspondant à un mot-clé, à partir d'un URL de départ.
 
 ## Description du programme
-À partir d'un URL d'entrée que l'utilisateur renseigne, Cr@wler trouve d'autres pages à explorer en commençant par analyser le fichier *robots.txt* de l'URL requêté.
+À partir d'un URL d'entrée que l'utilisateur renseigne, Cr@wleye trouve d'autres pages à explorer en commençant par analyser le fichier *robots.txt* de l'URL requêté.
 
-Si ce fichier n'existe pas, ou s'il ne contient pas de sitemaps permettant de récupérer facilement des URLs, Cr@wler analyse le code HTML de l'URL requêté et récupère les balises de liens trouvées dans ledit code. Cr@wler récupère également les pièces jointes détectées si demandé par l'utilisateur.
+Si ce fichier n'existe pas, ou s'il ne contient pas de sitemaps permettant de récupérer facilement des URLs, Cr@wleye analyse le code HTML de l'URL requêté et récupère les balises de liens trouvées dans ledit code. Cr@wleye récupère également les images contenues dans le code HTML.
 
-Cr@wler prend ensuite l'un des URLs récupéré et recommence son analyse, jusqu'à la fin du programme.
+Cr@wleye prend ensuite l'un des URLs récupéré et recommence à récupérer des images, jusqu'à la fin du programme.
+Ce dernier se termine lorsque Cr@wleye ne trouve plus de liens à explorer.
 
-Le programme se termine lorsque Cr@wler arrive à la limite d'URLs à trouver renseignée par l'utilisateur, ou s'il ne trouve plus de liens à explorer.
-
-Une fois terminé, le programme écrit dans un fichier *crawled_webpages.txt* tous les urls trouvées.
-
-Cr@wler fournit ensuite un graphe affichant le réseau de répartition des URLs selon le domaine du site (ex : hébergement de vidéos).
+Une fois terminé, le programme utilise de l'IA afin de détecter dans les images récupérées la présence (ou non) de l'objet renseigné par l'utilisateur.
 
 ## Lancer le programme
 
 ```
-git clone https://github.com/DonMako/crawler.git
-cd crawler
+git clone https://github.com/DonMako/crawleye.git
+cd crawleye
 pip install -r requirements.txt
 python3 main.py
 ```
 
 ## To-do list
-Dans une volonté de prolonger le travail sur Cr@wler, de nouvelles fonctionnalités sont en cours de réalisation:
+Dans une volonté de prolonger le travail sur Cr@wleye :
 
-* la création d'un mini-serveur local permettant d'accéder:
-    + à un formulaire permettant de lancer la requête
-    + de téléchager la liste des URLS crawlés sous différents formats (xls, csv, json)
-    + de récupérer les pièces jointes détectées par le crawler sur les pages rencontrées, selon un type rentré par l'utilisateur (PDF, xls, png)
-* le multi-threading du crawler
-* une détection des pubs afin d'éviter au crawler de travailler sur des pages inutiles
+* une version fonctionnelle du crawler !!
+* la création d'une webapp permettant d'accéder:
+    + à un formulaire permettant de lancer le crawler
+    + de téléchager un dossier contenant l'ensemble des images crawlées contenant l'objet renseigné par l'utilisateur
+* le multi-threading du crawler afin d'accélérer son efficacité
