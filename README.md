@@ -4,7 +4,7 @@
 
 Un crawler, appelé également « robot d'indexation », est un logiciel qui a généralement pour principale mission d'explorer le Web afin de collecter les ressources (pages Web, images, vidéos, etc.), pour permettre à un moteur de recherche de les indexer.
 
-Cr@wleye est un crawler web basé sur l'IA ayant objectif de récupérer des images correspondant à un mot-clé, à partir d'un URL de départ.
+Cr@wleye est un simili crawler web utilisant l'IA et ayant objectif de récupérer des images correspondant à un mot-clé, à partir d'un URL de départ.
 
 ## Description du programme
 À partir d'un URL d'entrée que l'utilisateur renseigne, Cr@wleye trouve d'autres pages à explorer en commençant par analyser le fichier *robots.txt* de l'URL requêté.
