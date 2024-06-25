@@ -1,26 +1,27 @@
-from crawler import clean_function, request_url
+"""Module allowing work on the robots.txt's files"""
+
 from urllib import robotparser
+from crawler.HTMLInspector import HTMLInspector
 
 
+class Robots():
+    """Class allowing the consultation of the robots.txt's file of a given URL"""
 
-def request_robots(url: str):
-    
-    base_url = clean_function.clean_url(url)
+    def __init__(self, url: str):
+        self.url = url
 
-    urls_allowed =[]
-
-    try:
+    def request_robots(self):
+        """Function requesting the robot.txt's file of a given URL"""
+        urls_allowed = []
         parser = robotparser.RobotFileParser()
-        parser.set_url(base_url)
+        parser.set_url(self.url)
         parser.read()
         sitemaps = parser.site_maps()
 
-        if sitemaps != None:
+        if sitemaps is not None:
             urls_allowed = sitemaps
         else:
-            urls_allowed = request_url.request_function(url)
+            inspector = HTMLInspector(self.url)
+            urls_allowed = inspector.find_urls()
 
-    except:
-        urls_allowed = request_url.request_function(url)
-
-    return urls_allowed
+        return urls_allowed
