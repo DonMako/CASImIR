@@ -1,7 +1,7 @@
 """Module allowing work on the robots.txt's files"""
 
 from urllib import robotparser
-from crawler.HTMLInspector import HTMLInspector
+from crawler.html_inspector import HTMLInspector
 
 
 class Robots():
@@ -17,11 +17,9 @@ class Robots():
         parser.set_url(self.url)
         parser.read()
         sitemaps = parser.site_maps()
-
         if sitemaps is not None:
             urls_allowed = sitemaps
         else:
             inspector = HTMLInspector(self.url)
             urls_allowed = inspector.find_urls()
-
         return urls_allowed
