@@ -8,7 +8,7 @@ Un crawler, appelé également « robot d'indexation », est un logiciel qui a 
 
 ---
 
-Crawler Avec Scrapping d'IMages Intelligent comme Rempart (CASImIR) est un simili crawler web utilisant l'IA et ayant pour objectif de détecter des images pédo-pornographique sur des sites webs, à partir d'un URL de départ.
+Crawler Avec Scrapping d'IMages Intelligent servant de Rempart (CASImIR) est un simili crawler web utilisant l'IA et ayant pour objectif de détecter des images pédo-pornographique sur des sites webs, à partir d'un URL de départ.
 
 ## Description du programme
 
