@@ -22,8 +22,8 @@ Une fois terminé, CASImIR utilise un modèle d'intelligence artificelle afin de
 ## Lancer le programme
 
 ```
-git clone https://github.com/DonMako/casimir.git
-cd casimir
+git clone https://github.com/DonMako/CASImIR.git
+cd CASImIR
 pip install -r requirements.txt
 python3 main.py
 ```
