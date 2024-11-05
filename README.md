@@ -15,7 +15,7 @@ Crawler Avec Scrapping d'IMages Intelligent servant de Rempart (CASImIR) est un 
 À partir d'un URL d'entrée que l'utilisateur renseigne, CASImIR trouve d'autres pages à explorer en scrappant le code source de l'URL renseignée.
 CASImIR prodite de ce scrap pour récupérer l'URL des images contenues dans le code HTML de la page.
 
-CASIMUIR recommence ensuite l'opération sur l'une des URLs récupérées, jusqu'à atteindre la limite d'URLs à scrapper indiquée par l'utilisateur, ou lorsqu'il ne trouve plus de liens à explorer.
+CASImIR recommence ensuite l'opération sur l'une des URLs récupérées, jusqu'à atteindre la limite d'URLs à scrapper indiquée par l'utilisateur, ou lorsqu'il ne trouve plus de liens à explorer.
 
 Une fois terminé, CASImIR utilise un modèle d'intelligence artificelle afin de détecter dans les images récupérées la présence (ou non) de l'objet renseigné par l'utilisateur.
 

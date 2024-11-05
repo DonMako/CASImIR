@@ -1,8 +1,7 @@
 import argparse
-from crawler import crawler_function
 import networkx as nx
+from crawler import crawler_function
 import webbrowser
-
 
 def main(url: str, threshold_urls: int):
 
