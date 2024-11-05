@@ -7,9 +7,9 @@ from crawler.robots import Robots
 class Crawler():
     """
     :param list stock: List of the URLs the crawler will request
-    :param int limit: Number of URLs the crawler will request
-    :param int starting_index: Index of the element of the stock actually used in the crawl
-    :param list list_images: List of the images' URLs the crawler found
+    :param int limit: Number of URLs the crawler has to request
+    :param int starting_index: Index of the url of the stock actually crawled
+    :param list list_images: List of the images' link the crawler found
     :param bool enough_urls: Boolean indicating if the crawler's limit has been reached 
     """
 

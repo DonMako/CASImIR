@@ -5,7 +5,9 @@ from crawler.html_inspector import HTMLInspector
 
 
 class Robots():
-    """Class allowing the consultation of the robots.txt's file of a given URL"""
+    """
+    :param str url: url whose robots.txt's file will be consulted
+    """
 
     def __init__(self, url: str):
         self.url = url
