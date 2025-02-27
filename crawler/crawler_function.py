@@ -28,13 +28,9 @@ class Crawler():
                 robots_file = Robots(url_request)
                 result = robots_file.request_robots()
                 for url_found in result:
-                    if not self.check_existing(url_found):
+                    if not url_found in self.stock:
                         self.stock.append(url_found)
                 self.enough_urls = len(self.stock) >= self.limit
             inspector = HTMLInspector(url_request)
             self.list_images.append(inspector.find_images())
             self.starting_index += 1
-
-    def check_existing(self, new_url: str):
-        """Check function to see if an URL is already in the stock"""
-        return new_url in self.stock
