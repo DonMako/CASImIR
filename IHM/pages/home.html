@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
-
-<header>
-	<img src="../static/logo.png" alt="CASImIR" aria-hidden="true" width="200" />CASImIR
-</header>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CASImIR</title>
+ </head>
+	<header>
+		<img src="../static/logo.png" alt="CASImIR" aria-hidden="true" width="200" />CASImIR
+	</header>
 
 <body>
-	<form action="/action_page.php">
-		<label for="url">Url:</label><br>
-		<input type="url" id="url" name="url" placeholder="https://example.com"><br>
-		<label for="threshold">Images threshold:</label><br>
-		<input type="number" id="threshold" name="threshold" placeholder="10"><br><br>
+	<form>
+		<label for="url">URL de départ:</label><br>
+		<input type="url" id="url" name="url" placeholder="https://example.com">
+		<label for="threshold">Niveau de confiance des images:</label>
+		<input type="number" id="threshold" name="threshold" placeholder="10">
 		<button type="submit">Crawl</button>
 	</form>
-	<button type="submit">Download images results</button>
+	<button type="submit">Voir le résultat du crawl</button>
 </body>
 
 <footer>
