@@ -1,6 +1,6 @@
 class User:
     """
-    :param str id: Identifiant of the user
+    :param str id: Identifier of the user
     :param str platform: Where the user posted the images
     :param list images: List of images the user posted
     """
