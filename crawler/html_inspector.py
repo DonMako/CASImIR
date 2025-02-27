@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup as BS
 
 
 class HTMLInspector():
+    
     """
     :param str url: URL of the page which HTML code will be inspected
-
     """
 
     def __init__(self, url: str):
@@ -28,7 +28,7 @@ class HTMLInspector():
         return images_found
 
     def find_urls(self):
-        """Method finding other link inside the HTML code"""
+        """Method finding URL inside the HTML code"""
         urls_found = []
         soup = self.prepare_soup()
         for link in soup.find_all("a"):
