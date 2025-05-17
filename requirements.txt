@@ -5,5 +5,5 @@ beautifulsoup4==4.11.2
 -e /usr/lib/python3/dist-packages/Jinja2-2.10.1.egg-info
 matplotlib==3.3.4
 networkx==2.8.8
-nltk==3.8.1
+nltk==3.9
 validators==0.20.0
